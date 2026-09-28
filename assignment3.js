@@ -6,13 +6,21 @@ let tasks = [
 const tasklist = document.getElementById('task_list');// la yzidon bel html
 const task_input = document.getElementById('task_input');
 const taskForm = document.querySelector('.add_task form');
-function renderTasks() {
-  tasklist.innerHTML = "";// la tchil el duplication
 
-  tasks.forEach((task, index) => {
+
+function renderTasks() {
+  tasklist.innerHTML = "";
+
+  tasks.forEach(task => {
     const list = document.createElement('li');
     list.textContent = task.text;
-    list.dataset.index = index;
+    list.dataset.id = task.id;
+
+    const deleteBtn = document.createElement('button');
+    deleteBtn.textContent = 'Delete';
+    deleteBtn.classList.add('delete');
+    list.append(deleteBtn);
+
     tasklist.append(list);
   });
 }
@@ -34,10 +42,29 @@ function addTask() {
     task_input.value = ''; //clear the textarea back to empty
     renderTasks();// re-erase everything inside so we dont duplicate when we add a new one the old elemnets
 }
+
+function deleteTask(id){
+  tasks = tasks.filter(task => task.id !== id);
+  renderTasks();
+}
+
  taskForm.addEventListener('submit', (event) => { 
   event.preventDefault();
   addTask();
-
 });
+
+
+tasklist.addEventListener('click', (event) => {
+  const li = event.target.closest('li');
+  if (!li) return;
+
+  const id = Number(li.dataset.id);
+
+  if (event.target.closest('.delete')) {
+    deleteTask(id);
+    return;
+  }
+});
+
 
 renderTasks();
