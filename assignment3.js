@@ -3,6 +3,7 @@ let tasks = loadTasks();
 const tasklist = document.getElementById('task_list');// la yzidon bel html
 const task_input = document.getElementById('task_input');
 const taskForm = document.querySelector('.add_task form');
+const emptyMessage = document.getElementById('empty_message');
 
 function saveTasks() {
   localStorage.setItem('tasks', JSON.stringify(tasks));
@@ -38,6 +39,7 @@ function renderTasks() {
     list.append(deleteBtn);
 
     tasklist.append(list);
+    emptyMessage.hidden = tasks.length > 0;
   });
 }
 

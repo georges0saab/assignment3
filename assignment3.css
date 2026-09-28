@@ -130,3 +130,8 @@ h1 {
   text-decoration: line-through;
   opacity: 0.7;
 }
+#empty_message {
+  text-align: center;
+  padding: var(--space-md);
+  color: var(--color-primary);
+}
