@@ -36,3 +36,44 @@ h1 {
 .add_task {
   margin-bottom: var(--space-md);
 }
+
+.add_task form {
+  display: flex;
+  align-items: center;
+  gap: var(--space-xs);
+}
+
+.add_task label {
+  font-weight: 600;
+}
+
+.add_task input {
+  flex: 1;
+  min-width: 0;
+  padding: var(--space-xs);
+  border: 2px solid var(--color-primary);
+  border-radius: 6px;
+  background-color: #fff;
+  color: var(--color-text);
+  font: inherit;
+}
+
+.add_task input:focus {
+  outline: 3px solid var(--color-primary);
+  outline-offset: 2px;
+}
+
+.add_task button {
+  padding: var(--space-xs) var(--space-sm);
+  border: none;
+  border-radius: 6px;
+  background-color: var(--color-primary);
+  color: #fff;
+  font: inherit;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.add_task button:hover {
+  background-color: var(--color-dark);
+}
