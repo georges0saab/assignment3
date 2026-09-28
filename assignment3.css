@@ -1,0 +1,17 @@
+:root {
+  /* color palette (blue) */
+  --color-bg: #06448b;
+  --color-light: #04274c;
+  --color-accent: #5B9BD5;
+  --color-primary: #1F5FA8;
+  --color-dark: #12365F;
+  --color-text: #0F2540;
+  --color-error: #B3261E;
+
+  /* spacing scale */
+  --space-xs: 0.5rem;
+  --space-sm: 1rem;
+  --space-md: 1.5rem;
+  --space-lg: 2.5rem;
+  --space-xl: 4rem;
+}
