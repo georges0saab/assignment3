@@ -1,11 +1,17 @@
-let tasks = [
-  { id: 1, text: "playing football", completed: false },
-  { id: 2, text: "showering ", completed: false }
-];
+let tasks = loadTasks();
 
 const tasklist = document.getElementById('task_list');// la yzidon bel html
 const task_input = document.getElementById('task_input');
 const taskForm = document.querySelector('.add_task form');
+
+function saveTasks() {
+  localStorage.setItem('tasks', JSON.stringify(tasks));
+}
+
+function loadTasks() {
+  const raw = localStorage.getItem('tasks');
+  return JSON.parse(raw) || [];
+}
 
 
 function renderTasks() {
@@ -15,6 +21,16 @@ function renderTasks() {
     const list = document.createElement('li');
     list.textContent = task.text;
     list.dataset.id = task.id;
+    const checkbox = document.createElement('input');
+    checkbox.type = 'checkbox';
+    checkbox.checked = task.completed;
+    checkbox.classList.add('toggle');
+    checkbox.setAttribute('aria-label', 'Mark task as completed');
+    list.prepend(checkbox);
+
+    if (task.completed) {
+    list.classList.add("completed");
+}
 
     const deleteBtn = document.createElement('button');
     deleteBtn.textContent = 'Delete';
@@ -39,12 +55,20 @@ function addTask() {
     completed: false
   }; 
     tasks.push(task);//added it to my list of task in the array
+    saveTasks();
     task_input.value = ''; //clear the textarea back to empty
     renderTasks();// re-erase everything inside so we dont duplicate when we add a new one the old elemnets
+}
+function toggleTask(id){
+  const task = tasks.find(task => task.id === id);
+  task.completed = !task.completed;
+  saveTasks();
+  renderTasks();
 }
 
 function deleteTask(id){
   tasks = tasks.filter(task => task.id !== id);
+  saveTasks();
   renderTasks();
 }
 
@@ -64,6 +88,7 @@ tasklist.addEventListener('click', (event) => {
     deleteTask(id);
     return;
   }
+    toggleTask(id);   
 });
 
 
