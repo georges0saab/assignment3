@@ -1,8 +1,8 @@
 :root {
   /* color palette (blue) */
-  --color-bg: #06448b;
-  --color-light: #04274c;
-  --color-accent: #5B9BD5;
+  --color-bg: #71b3ff;
+  --color-light: #b7cde4;
+  --color-accent: #4489ca;
   --color-primary: #1F5FA8;
   --color-dark: #12365F;
   --color-text: #0F2540;
@@ -14,4 +14,25 @@
   --space-md: 1.5rem;
   --space-lg: 2.5rem;
   --space-xl: 4rem;
+}
+
+body {
+  font-family: system-ui, sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  line-height: 1.5;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: var(--space-md) var(--space-sm);
+}
+
+h1 {
+  text-align: center;
+  color: var(--color-dark);
+  font-size: 2rem;
+  margin-bottom: var(--space-md);
+}
+
+.add_task {
+  margin-bottom: var(--space-md);
 }
